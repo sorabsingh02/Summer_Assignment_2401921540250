@@ -1,14 +1,14 @@
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        int n = nums.size();
-        for(int i=0;i<n-1;i++){
-            for(int j=i+1;j<n;j++){
-                if(nums[i]+nums[j]==target){
-                    return {i,j};
-                }
-            }
+    int maxSubArray(vector<int>& nums) {
+        int maxSum = nums[0];
+        int currentSum = nums[0];
+        
+        for (int i = 1; i < nums.size(); i++) {
+            currentSum = max(nums[i], currentSum + nums[i]);
+            maxSum = max(maxSum, currentSum);
         }
-         return{};
-        }
+        
+        return maxSum;
+    }
 };
